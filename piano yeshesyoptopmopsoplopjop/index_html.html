@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            font-size: 1.5rem;
+        }
+
+        .all {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #58909e9c;
+            min-height: 98vh;
+        }
+
+        div {
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            position: relative;
+            font-size: 70px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        .contant {
+            position: relative;
+        }
+
+        #noteImage {
+            position: absolute;
+            top: 0px;
+            /* -42px; -27px; -12px; 2px; 17px; 32px; 47px; 61px; 77px; 91px; 107px;  */
+            left: 0px;
+            opacity: 1;
+        }
+        #arrow{
+            position: absolute;
+            top: -100px;
+            left: 150px;
+            width: 100px;
+            height: 120px;
+        }
+        #lineImage {
+            border-radius: 50px;
+        }
+
+        .randPog {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .randPog div div {
+            margin: auto;
+        }
+
+        input[id*="i"] {
+            width: 60px;
+            font-size: 30px;
+            margin-top: 5px;
+            text-align: center;
+            box-shadow: 3px 3px 10px rgb(21, 30, 82);
+
+
+
+        }
+
+        #counter {
+            text-align: center;
+            display: none;
+            margin: 30px;
+            margin-bottom: 37px;
+            width: 150px;
+            border-radius: 30px;
+        }
+
+        div[id*="k"] {
+            width: 20px;
+            height: 20px;
+            background-color: aqua;
+            border: 3px solid #2f9ec0;
+            border-radius: 50%;
+            box-shadow: 1px 2px 10px #b832da;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 20px;
+            border: 3px black solid;
+            border-radius: 30px;
+            background-color: #3842cf;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 5px 2px 20px black;
+        }
+
+        button:hover {
+            color: #41983b;
+            background-color: #fff;
+            box-shadow: 30px 5px 20px #3d5cb1;
+        }
+
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 0%;
+            height: 30px;
+            background-color: #04AA6D;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+
+
+
+        #counter {
+            width: 150px;
+        }#info{
+
+position: absolute;
+
+color: #eedcdc;
+
+border: 1px solid rgb(110, 110, 110);
+
+background: rgba(11, 53, 61, 0.244);
+
+/* background: linear-gradient(90deg, rgba(0,212,255,0.444) 13%, rgba(246,230,36,0.444) 82%); */
+
+border-radius: 1rem;
+
+padding: 10px;
+
+font-style: italic;
+
+top: 40px;
+
+left: 350px;
+
+font-size: 25px;
+
+width: 600px;
+
+display: none;
+
+z-index: 1;
+
+}
+
+.hover {
+
+display: flex;
+
+}
+
+#infoImg{
+
+filter: drop-shadow(5px 5px 1px gray);
+
+}
+        
+           
+        
+        .hover {
+            display: flex;
+        }
+        #infoImg{
+            filter: drop-shadow(5px 5px 1px gray);
+        }
+
+        #reload{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="myProgress">
+        <div id="myBar">0%</div>
+    </div>
+
+    <div class="all">
+        <div class="nav"></div>
+        <div class="header">
+            <h1 >Nošu spēle
+                <img id="infoImg" src="info.png" alt="" width="40px">
+                <span id="info" class="info">
+                    Noteikumi:  <br>
+                    ⚠ Spēle domāta tiem, kas vēlas iemācīties nošu nosaukumus pēc skaņas vai atrašanās vietas nošu celiņā.
+                    <br> ⚠ Rakstam kastītēs: <br> do, re, mi, fa, sol, la, si, do2, re2, mi2, fa2
+                </li>
+                </li>
+                    
+                </span>
+            </h1>
+        </div>
+
+        <button id="start">Sākt spēli</button>   
+        <button id="reload" onclick="reloadPage()">Mēģināt vēlreiz </button>
+        
+        <input type="text" name="" id="counter" value="00 sec" readonly>
+        <br>
+        <div class="contant">
+            <img src="piano1.jpg" id="lineImage" alt="">
+            <img src="sun.png" id="arrow" alt="">
+        </div>
+        <div class="randPog0">
+            <div class="randPog">
+                <div>
+                    <div class="tkrasa" id="k1"></div>
+                    <input class="tkrasa" type="text" id="i1" placeholder="1" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k2"></div>
+                    <input class="tkrasa" type="text" id="i2" placeholder="2" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k3"></div>
+                    <input class="tkrasa" type="text" id="i3" placeholder="3" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k4"></div>
+                    <input class="tkrasa" type="text" id="i4" placeholder="4" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k5"></div>
+                    <input class="tkrasa" type="text" id="i5" placeholder="5" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k6"></div>
+                    <input class="tkrasa" type="text" id="i6" placeholder="6" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k7"></div>
+                    <input class="tkrasa" type="text" id="i7" placeholder="7" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k8"></div>
+                    <input class="tkrasa" type="text" id="i8" placeholder="8" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k9"></div>
+                    <input class="tkrasa" type="text" id="i9" placeholder="9" maxlength="4">
+                </div>
+                <div>
+                    <div class="krasa" id="k10"></div>
+                    <input class="tkrasa" type="text" id="i10" placeholder="10" maxlength="4">
+                </div>
+            </div>
+            <div>
+                <p></p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+function reloadPage()
+{
+location.reload();
+}
+        
+        let info = document.getElementById("info");
+        let infoImg = document.getElementById("infoImg");
+            infoImg.addEventListener('mouseenter', infoShow => {
+                // if (document.getElementById("info").style.display = "none"){
+                    document.getElementById("info").style.display = "flex"
+                // }
+            } )
+
+            infoImg.addEventListener('mouseleave', infoShow => {
+                // if (document.getElementById("info").style.display = "none"){
+                    document.getElementById("info").style.display = "none"
+                // }
+            } )
+
+            //function hover(infoImg, hover){
+                // infoImg.addEventListener('mouseenter', e => info.classList.add(hover))
+                // infoImg.addEventListener('mouseleave', e => info.classList.remove(hover))
+            //}
+        
+        document.getElementById("start").addEventListener ("click", start);
+        const timer = ms => new Promise(res => setTimeout(res, ms)); //laika ģenerēšana (paņēmu no interneta)
+
+
+        function start() {
+            document.getElementById("start").style.display = "none";
+            document.getElementById("counter").style.display = "block";
+            document.getElementById("reload").style.display = "block";
+
+            game();
+
+        }
+
+        function again() {
+            location.reload();
+            document.getElementById("start").style.display = "block";
+            document.getElementById("").style.display = "none";
+        }
+
+        
+        async function game() {
+            let nr = 0;
+            let lefty = 150;
+            let newNoteP = Array();
+            let newNoteName = Array();
+            let newNoteSound = Array();
+            let newSoundNr = Array();
+            const notePosition = ["-117", "-102", "-87", "-72", "-57", "-42", "-27", "-12", "2", "17", "32", "47"]; //nošu ģenerēšana koordinātēs
+            const songNr = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+            const nosuNosaukumi = ["sol2", "fa2", "mi2", "re2", "do2", "si", "la", "sol", "fa", "mi", "re", "do"]; //jāprecizē!
+            
+            //["sol2", "fa2", "mi2", "re2", "do2", "si", "la", "sol", "fa", "mi", "re", "do"];
+            //["do", "re", "mi", "fa", "sol", "la", "si", "do2", "re2", "mi2", "fa2", "so2"]
+            //uzģenerējam visas kastes un notis tajās + ar skaņu
+            for (var i = 0; i < 10; i++) {
+                let randomNr = Math.floor(Math.random() * 11) + 1;
+                let rndNotePoz = notePosition[randomNr];
+                //console.log(randomNr);
+
+                let newDiv = document.createElement("div"); // izveido divu ar elementiem priekš nošu png
+                newDiv.style.width = "130px";
+                newDiv.style.height = "106px";
+                newDiv.style.borderRight = "4px solid rgb(8, 8, 8)";
+                newDiv.style.display = "inline-block";
+                newDiv.style.position = "absolute";
+                newDiv.style.textAlign = "left";
+                newDiv.style.top = "74px";
+                newDiv.style.left = `${lefty}px`;
+                let newNote = document.createElement("img"); //izveido elementu <img>
+                newNote.src = "note0.png";
+                newNote.id = `noteImage${nr}`;
+                newNote.style.position = "absolute";
+                newNote.style.top = `${rndNotePoz}px`;
+                newNoteP.push(`${rndNotePoz}px`); //saglabā visu jauno nošu pozīcijas sarakstā (PUSH funkcija)
+                newNoteName.push(nosuNosaukumi[randomNr]);
+                newNoteSound.push(notePosition[randomNr]); //jauna ideja skaņas koordināšu iegūšanai bet neizmantošu jau vecā labi strādā (v4)
+                newSoundNr.push(songNr[randomNr]);
+                const container = document.querySelector(".contant");
+                container.appendChild(newDiv);
+                newDiv.appendChild(newNote);
+
+                const number = randomNr <= 9 ? '0' + (randomNr) : (randomNr); //AUDIO
+                let audio = new Audio(`sound/key` + number + '.mp3');
+                audio.play();
+
+                nr = nr + 1;
+                lefty = lefty + 140; //kastes novietojuma koordinātēm pievieno 140px
+
+                console.log(newNoteName[i]);
+                await timer(1000);
+            }
+
+            document.getElementById(`noteImage0`).addEventListener("click", runAudioOnClick0);
+            document.getElementById(`noteImage1`).addEventListener("click", runAudioOnClick1);
+            document.getElementById(`noteImage2`).addEventListener("click", runAudioOnClick2);
+            document.getElementById(`noteImage3`).addEventListener("click", runAudioOnClick3);
+            document.getElementById(`noteImage4`).addEventListener("click", runAudioOnClick4);
+            document.getElementById(`noteImage5`).addEventListener("click", runAudioOnClick5);
+            document.getElementById(`noteImage6`).addEventListener("click", runAudioOnClick6);
+            document.getElementById(`noteImage7`).addEventListener("click", runAudioOnClick7);
+            document.getElementById(`noteImage8`).addEventListener("click", runAudioOnClick8);
+            document.getElementById(`noteImage9`).addEventListener("click", runAudioOnClick9);
+
+            let imgPoz0 = document.getElementById("noteImage0").style.top;
+            let imgPoz1 = document.getElementById("noteImage1").style.top;
+            let imgPoz2 = document.getElementById("noteImage2").style.top;
+            let imgPoz3 = document.getElementById("noteImage3").style.top;
+            let imgPoz4 = document.getElementById("noteImage4").style.top;
+            let imgPoz5 = document.getElementById("noteImage5").style.top;
+            let imgPoz6 = document.getElementById("noteImage6").style.top;
+            let imgPoz7 = document.getElementById("noteImage7").style.top;
+            let imgPoz8 = document.getElementById("noteImage8").style.top;
+            let imgPoz9 = document.getElementById("noteImage9").style.top;
+
+            function runAudioOnClick0() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz0 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        console.log(songNr[i]);
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick1() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz1 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick2() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz2 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick3() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz3 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick4() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz4 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick5() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz5 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick6() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz6 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick7() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz7 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick8() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz8 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+            function runAudioOnClick9() { // skaņa kad uzklikšķina uz nots
+                for (let i = 0; i <= 11; i++) {
+                    if (imgPoz9 == notePosition[i] + `px`) {
+                        let audio = new Audio(`sound/key` + songNr[i] + '.mp3');
+                        audio.autoplay = true;
+                        audio.play();
+                        break;
+                    }
+                }
+            }
+
+            const i1 = document.getElementById("i1");
+            const i2 = document.getElementById("i2");
+            const i3 = document.getElementById("i3");
+            const i4 = document.getElementById("i4");
+            const i5 = document.getElementById("i5");
+            const i6 = document.getElementById("i6");
+            const i7 = document.getElementById("i7");
+            const i8 = document.getElementById("i8");
+            const i9 = document.getElementById("i9");
+            const i10 = document.getElementById("i10");
+
+            // kastes SARKANAS vai ZAĻAS no ievadītās nots //šis ir BIG!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!! newNoteName !!!!!!!!!!!!!!!!
+            i1.addEventListener('input', kaste_i1 => {
+                if (document.getElementById("i1").value === newNoteName[0]) {
+                    document.getElementById("k1").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[0] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i1").readOnly = true;
+                    document.getElementById("i2").focus();
+                    document.getElementById("arrow").style.left="290px"
+                    progressBar();
+                } else {
+                    document.getElementById("k1").style.backgroundColor = "red"
+                }
+            });
+            i2.addEventListener('input', kaste_i2 => {
+                if (document.getElementById("i2").value === newNoteName[1]) {
+                    document.getElementById("k2").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[1] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i2").readOnly = true;
+                    document.getElementById("i3").focus();
+                    document.getElementById("arrow").style.left="430px"
+                    progressBar();
+                } else {
+                    document.getElementById("k2").style.backgroundColor = "red"
+                }
+            });
+            i3.addEventListener('input', kaste_i3 => {
+                if (document.getElementById("i3").value === newNoteName[2]) {
+                    document.getElementById("k3").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[2] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i3").readOnly = true;
+                    document.getElementById("i4").focus();
+                    document.getElementById("arrow").style.left="570px"
+                    progressBar();
+                } else {
+                    document.getElementById("k3").style.backgroundColor = "red"
+                }
+            });
+            i4.addEventListener('input', kaste_i4 => {
+                if (document.getElementById("i4").value === newNoteName[3]) {
+                    document.getElementById("k4").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[3] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i4").readOnly = true;
+                    document.getElementById("i5").focus();
+                    document.getElementById("arrow").style.left="710px"
+                    progressBar();
+                } else {
+                    document.getElementById("k4").style.backgroundColor = "red"
+                }
+            });
+            i5.addEventListener('input', kaste_i5 => {
+                if (document.getElementById("i5").value === newNoteName[4]) {
+                    document.getElementById("k5").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[4] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i5").readOnly = true;
+                    document.getElementById("i6").focus();
+                    document.getElementById("arrow").style.left="850px"
+                    progressBar();
+                } else {
+                    document.getElementById("k5").style.backgroundColor = "red"
+                }
+            });
+            i6.addEventListener('input', kaste_i6 => {
+                if (document.getElementById("i6").value === newNoteName[5]) {
+                    document.getElementById("k6").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[5] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i6").readOnly = true;
+                    document.getElementById("i7").focus();
+                    document.getElementById("arrow").style.left="990px"
+                    progressBar();
+                } else {
+                    document.getElementById("k6").style.backgroundColor = "red"
+                }
+            });
+            i7.addEventListener('input', kaste_i7 => {
+                if (document.getElementById("i7").value === newNoteName[6]) {
+                    document.getElementById("k7").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[6] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i7").readOnly = true;
+                    document.getElementById("i8").focus();
+                    document.getElementById("arrow").style.left="1130px"
+                    progressBar();
+                } else {
+                    document.getElementById("k7").style.backgroundColor = "red"
+                }
+            });
+            i8.addEventListener('input', kaste_i8 => {
+                if (document.getElementById("i8").value === newNoteName[7]) {
+                    document.getElementById("k8").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[7] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i8").readOnly = true;
+                    document.getElementById("i9").focus();
+                    document.getElementById("arrow").style.left="1270px"
+                    progressBar();
+                } else {
+                    document.getElementById("k8").style.backgroundColor = "red"
+                }
+            });
+            i9.addEventListener('input', kaste_i9 => {
+                if (document.getElementById("i9").value === newNoteName[8]) {
+                    document.getElementById("k9").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[8] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i9").readOnly = true;
+                    document.getElementById("i10").focus();
+                    document.getElementById("arrow").style.left="1410px"
+                    progressBar();
+                } else {
+                    document.getElementById("k9").style.backgroundColor = "red"
+                }
+            });
+            i10.addEventListener('input', kaste_i10 => {
+                if (document.getElementById("i10").value === newNoteName[9]) {
+                    document.getElementById("k10").style.backgroundColor = "green";
+                    let audio = new Audio(`sound/key` + newSoundNr[9] + '.mp3');
+                    audio.autoplay = true;
+                    audio.play();
+                    document.getElementById("i10").readOnly = true;
+                    progressBar();
+                    
+                } else {
+                    document.getElementById("k10").style.backgroundColor = "red"
+                }
+            });
+
+            countTimer()
+
+            async function countTimer() {
+                let i = 0;
+                let timerNumbersSec;
+                document.getElementById("i1").focus();
+                do {
+                    timerNumbersSec = i <= 9 ? '0' + (i + ` sec`) : (i + ` sec`);
+                    document.getElementById("counter").value = timerNumbersSec;
+                    i = i + 1;
+                   
+                    await timer(1000);
+                } while (
+                    document.getElementById("k1").style.backgroundColor !== "green" ||
+                    document.getElementById("k2").style.backgroundColor !== "green" ||
+                    document.getElementById("k3").style.backgroundColor !== "green" ||
+                    document.getElementById("k4").style.backgroundColor !== "green" ||
+                    document.getElementById("k5").style.backgroundColor !== "green" ||
+                    document.getElementById("k6").style.backgroundColor !== "green" ||
+                    document.getElementById("k7").style.backgroundColor !== "green" ||
+                    document.getElementById("k8").style.backgroundColor !== "green" ||
+                    document.getElementById("k9").style.backgroundColor !== "green" ||
+                    document.getElementById("k10").style.backgroundColor !== "green"
+                );   
+            }
+        }
+
+        
+      //var i = 0;
+            //var width = 0;
+            var width = Number();
+            function progressBar() {
+                width = width + 10;
+                // //   if (i == 0) {
+                // //     i = 0;
+                var elem = document.getElementById("myBar");
+                //  var width = Number();
+                 
+                // // var id = setInterval(frame, 10);
+                // // function frame() {
+                // //   if (width >= 100) {
+                // //     clearInterval(id);
+                //     let  i = 10;
+                // //   } else {
+                // width = width + i;
+                console.log(width);
+                elem.style.width = width + "%";
+                elem.innerHTML = width + "%";
+                // //width 
+                // //       }
+                // //     }
+                // //   }
+            }
+            
+
+    </script>
+</body>
+
+</html>
